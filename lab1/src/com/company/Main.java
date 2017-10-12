@@ -440,7 +440,6 @@ public class Main {
                 public void actionPerformed(ActionEvent e) {
                     List<Side> list = new ArrayList<>();
                     String answerToJframe = new String();//存储一条路径
-                    //answerToJframe = "";
                     String str1, str2;
                     if ( i < G.getSize()  ){
                         Stack<String> stack =  new Stack<>();//利用栈存储路径
