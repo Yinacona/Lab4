@@ -357,7 +357,6 @@ public class Main {
                 answer = answer + " ";
 
             else if (listOfBridgeWords.size() == 1) {
-                //System.out.print(listOfBridgeWords.get(0));
                 answer = answer + " " + listOfBridgeWords.get(0) + " ";
             }
             else {
