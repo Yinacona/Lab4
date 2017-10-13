@@ -22,7 +22,9 @@
  ******************************************************************************
  */
 package com.company;
+<<<<<<< HEAD
 // work on B1
+
 import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.File;
