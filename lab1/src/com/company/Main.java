@@ -1,5 +1,5 @@
 package com.company;
-
+// NOW WE WORK ON B2
 import javax.swing.*;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
