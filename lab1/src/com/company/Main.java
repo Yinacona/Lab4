@@ -1,5 +1,6 @@
 package com.company;
-//work on B1
+<<<<<<< HEAD
+//work on 1150310115
 import javax.swing.*;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;

@@ -1,7 +1,7 @@
 package com.company;
 <<<<<<< HEAD
-// work on B1
-
+<<<<<<< HEAD
+// work on 1150310115
 /**
  * Created by uuuup on 2017/9/5.
  */
