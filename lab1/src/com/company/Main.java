@@ -62,11 +62,11 @@ public class Main {
 
                         if (readFileByChars(path).equals(new String("文件不存在")))
                             JOptionPane.showMessageDialog(null, "文件不存在",
-                                    "Error！", JOptionPane.ERROR_MESSAGE);//如果结果不是空，则显示有向图已经建立
+                                    "Error！", JOptionPane.ERROR_MESSAGE);
                         else if (G == null) JOptionPane.showMessageDialog(null, "有向图尚未生成",
-                                "Error!", JOptionPane.ERROR_MESSAGE);//如果结果不是空，则显示有向图已经建立
+                                "Error!", JOptionPane.ERROR_MESSAGE);
                         else JOptionPane.showMessageDialog(null, "有向图已经建立",
-                                    "提示信息", JOptionPane.INFORMATION_MESSAGE);//如果结果不是空，则显示有向图已经建立
+                                    "提示信息", JOptionPane.INFORMATION_MESSAGE);
 
                     }
                 }catch (Exception e2){
