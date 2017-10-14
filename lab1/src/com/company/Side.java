@@ -40,8 +40,8 @@ public class Side {
         }
         return bres;
     }
-  //
-//
+  //  public boolean equals(Side S){
+//        return (head.equals(S.getHead()) && tail.equals(S.getTail()) );
 //    }
 
     public static void main(String[] args){
