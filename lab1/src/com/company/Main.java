@@ -1,6 +1,4 @@
 package com.company;
-<<<<<<< HEAD
-//work on 1150310115
 import javax.swing.*;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
@@ -17,7 +15,7 @@ import java.lang.*;
 
 public class Main {
     private Graph G;
-   // private JFrame jframe = new JFrame();
+
 
     public Main(){
         //GUI设计
@@ -46,11 +44,19 @@ public class Main {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JFileChooser chooser = new JFileChooser();
+<<<<<<< HEAD
         chooser.setCurrentDirectory(new File("."));//设置当前打开的默认路径
 
 
         button1.addActionListener(new ActionListener() {
             @Override//当点击按钮1时生成一个新窗口，并让用户输入路径
+=======
+        chooser.setCurrentDirectory(new File("."));
+
+
+        button1.addActionListener(new ActionListener() {
+            @Override
+>>>>>>> cs/master
             public void actionPerformed(ActionEvent e) {
                 String path ;
                 try{
@@ -66,6 +72,11 @@ public class Main {
                                 "Error!", JOptionPane.ERROR_MESSAGE);//如果结果不是空，则显示有向图已经建立
                         else JOptionPane.showMessageDialog(null, "有向图已经建立",
                                     "提示信息", JOptionPane.INFORMATION_MESSAGE);//如果结果不是空，则显示有向图已经建立
+                                    "Error！", JOptionPane.ERROR_MESSAGE);
+                        else if (G == null) JOptionPane.showMessageDialog(null, "有向图尚未生成",
+                                "Error!", JOptionPane.ERROR_MESSAGE);
+                        else JOptionPane.showMessageDialog(null, "有向图已经建立",
+                                    "提示信息", JOptionPane.INFORMATION_MESSAGE);
 
                     }
                 }catch (Exception e2){
@@ -346,7 +357,6 @@ public class Main {
 
     private String generateNewText(String inputText){
         String [] arr = inputText.split("\\s+");
-
         String  answer = new String();
         if (arr.length == 0 || arr.length == 1) return inputText;
 
@@ -360,6 +370,11 @@ public class Main {
             else if (listOfBridgeWords.size() == 1) {
                 answer = answer + " " + listOfBridgeWords.get(0) + " ";
             }
+
+            else if (listOfBridgeWords.size() == 1)
+                answer = answer + " " + listOfBridgeWords.get(0) + " ";
+
+
             else {
                 int index = (int)(Math.random()*listOfBridgeWords.size());
                 answer = answer + " " + listOfBridgeWords.get(index) + " ";
@@ -441,6 +456,7 @@ public class Main {
                 public void actionPerformed(ActionEvent e) {
                     List<Side> list = new ArrayList<>();
                     String answerToJframe = new String();//存储一条路径
+
                     String str1, str2;
                     if ( i < G.getSize()  ){
                         Stack<String> stack =  new Stack<>();//利用栈存储路径

@@ -1,14 +1,16 @@
 package com.company;
-// work on 1150310115
+<<<<<<< HEAD
+
+
+
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.io.File;
 import java.util.List;
 
-/**
- * Created by uuuup on 2017/9/5.
- */
+
+
 public class Graph {
     private List<String> Nodes = new ArrayList<>();//list只是一个接口 具体实现需要Arraylist 和 LinkedList
     private List<Side> Sides = new ArrayList<>();

@@ -1,10 +1,5 @@
 package com.company;
-<<<<<<< HEAD
-<<<<<<< HEAD
-// work on 1150310115
-/**
- * Created by uuuup on 2017/9/5.
- */
+
 public class Side {
     private String head = new String();
     private String tail = new String();
@@ -42,6 +37,12 @@ public class Side {
         }
         return bres;
     }
+<<<<<<< HEAD
+=======
+  //  public boolean equals(Side S){
+//        return (head.equals(S.getHead()) && tail.equals(S.getTail()) );
+//    }
+>>>>>>> cs/master
 
     public static void main(String[] args){
         Side S = new Side("1", "2");
