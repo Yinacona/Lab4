@@ -16,7 +16,7 @@ import java.lang.*;
 
 public class Main {
     private Graph G;
-   // private JFrame jframe = new JFrame();
+
 
 
 
@@ -47,11 +47,11 @@ public class Main {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JFileChooser chooser = new JFileChooser();
-        chooser.setCurrentDirectory(new File("."));//设置当前打开的默认路径
+        chooser.setCurrentDirectory(new File("."));
 
 
         button1.addActionListener(new ActionListener() {
-            @Override//当点击按钮1时生成一个新窗口，并让用户输入路径
+            @Override
             public void actionPerformed(ActionEvent e) {
                 String path ;
                 try{
