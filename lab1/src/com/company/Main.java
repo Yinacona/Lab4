@@ -72,7 +72,7 @@ public class Main {
                 }catch (Exception e2){
                     e2.printStackTrace();
                 }
-                //D:\JAVACODE\JAVA_LAB1\text1.txt
+
             }
         });
 

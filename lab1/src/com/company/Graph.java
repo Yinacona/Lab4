@@ -61,13 +61,13 @@ public class Graph {
 
         for (Side s: Sides){
             this.vertexLists[getPosition(s.getHead())].add(s.getTail(), s.getKey());//构建邻接表的邻接部分
-            this.martixOfGraph[getPosition(s.getHead())][getPosition(s.getTail())] = s.getKey();//这里有所不同的是 各边的权值是各边出现的次数
+            this.martixOfGraph[getPosition(s.getHead())][getPosition(s.getTail())] = s.getKey();
         }
 
     }
 
 
-    public void preGraph(String str){//对字符串进行先行处理 得到顶点表和边表
+    public void preGraph(String str){
         String[] arr1 = str.split("[\\s]+");
         String[] arr ;//新建字符串数组要有大小
         List<String> listhaskongge = new ArrayList<>();
