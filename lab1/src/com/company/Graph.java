@@ -170,10 +170,10 @@ public class Graph {
         frame.setVisible(true);
 
         String type = "jpg";//将画的图存储起来
-        File out = new File("D:\\pics\\lab1." + type);    // Windows
+        File out = new File("G:\\gitbase\\Lab4\\lab1." + type);    // Windows
         gv.writeGraphToFile( gv.getGraph( gv.getDotSource(), type ), out );
 
-        JLabel background = new JLabel(new ImageIcon("D:\\pics\\lab1.jpg"));//url代表你图片的路径
+        JLabel background = new JLabel(new ImageIcon("G:\\gitbase\\Lab4\\lab1." + type));//url代表你图片的路径
         frame.add(background);//将你的jlabel背景加到jframe上
     }
 

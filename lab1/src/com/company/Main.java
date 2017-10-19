@@ -58,7 +58,7 @@ public class Main {
                     if (result == JFileChooser.APPROVE_OPTION) {
                         path = chooser.getSelectedFile().getPath();
 
-                        if (readFileByChars(path).equals(new String("文件不存在")))
+                        if (readFileByChars(path).equals("文件不存在"))
                             JOptionPane.showMessageDialog(null, "文件不存在",
                                     "Error！", JOptionPane.ERROR_MESSAGE);//如果结果不是空，则显示有向图已经建立
                         else if (G == null) JOptionPane.showMessageDialog(null, "有向图尚未生成",
@@ -185,7 +185,7 @@ public class Main {
                                 str = list.get(0);
                                 answerToFile.add(str+" ");
                             }
-                            else str = new String("遍历已经结束");
+                            else str ="遍历已经结束";
 
                             Document docs = messagePane.getDocument();//获得文本对象
                             try {
@@ -202,7 +202,7 @@ public class Main {
                         @Override
                         public void actionPerformed(ActionEvent e) {
                             try{
-                                File file = new File("D:\\JAVACODE\\JAVA_LAB1\\randomWalk.txt");//向文件中写入数据
+                                File file = new File("G:\\gitbase\\Lab4\\randomWalk.txt");//向文件中写入数据
                                 FileWriter fw = new FileWriter(file.getAbsoluteFile());
                                 BufferedWriter bw = new BufferedWriter(fw);
                                 for (String str :answerToFile) {
@@ -226,7 +226,7 @@ public class Main {
     }
 
     public  String readFileByChars(String filePath) {
-        String result = new String();
+        String result = null;
         File file = new File(filePath);
         if (!file.exists()) result = "文件不存在";
         else {
@@ -274,11 +274,11 @@ public class Main {
 //        jframe.setVisible(true);
 
         String type = "jpg";//将画的图存储起来
-        File out = new File("D:\\pics\\lab1." + type);    // Windows
+        File out = new File("G:\\gitbase\\Lab4\\lab1." + type);    // Windows
         gv.writeGraphToFile( gv.getGraph( gv.getDotSource(), type ), out );
 
         try {
-            openFile("D:\\pics\\lab1.jpg");
+            openFile("G:\\gitbase\\Lab4\\lab1." + type);
         }catch (IOException e) {
             e.printStackTrace();
         }
@@ -287,7 +287,6 @@ public class Main {
 //        JScrollPane jsp=new JScrollPane(background);//滚动条
 //        jframe.add(jsp);
 
-        return ;
     }
 
     public List<String> BridgeWords(String word1, String word2){
@@ -346,7 +345,7 @@ public class Main {
     private String generateNewText(String inputText){
         String [] arr = inputText.split("\\s+");
 
-        String  answer = new String();
+        String  answer = null;
         if (arr.length == 0 || arr.length == 1) return inputText;
 
         for (int i = 0; i < arr.length - 1; i++){
@@ -377,11 +376,11 @@ public class Main {
 
         //先查询这两个词是否在文本中出现
         if (positionOfWord1 == -1 && word2.length() == 0) return "No " + word1 + " in the graph!";
-        else if(positionOfWord1 == -1 || (positionOfWord2 == -1 && word2.length() != 0) )//这是真正不存在的情况，
+        else if(positionOfWord1 == -1 || (positionOfWord2 == -1 && word2.length() != 0) )//这是真正不存在的情况，//NOPMD
             return "No " + word1 + " or " + word2 + " in the graph!";
 
 
-        int BigNum = 10000000;
+        int     BigNum = 10000000;
         int[] path = new int[this.G.getSize()];//存储最短路径的最后节点
         int[][] graph = new int[this.G.getSize()][this.G.getSize()];//邻接矩阵
         int[] dist = new int[this.G.getSize()];//源点到目标点的最短距离
@@ -421,7 +420,7 @@ public class Main {
             }
         }//对图的处理结束，接下来是输出结果
 
-        String answer = new String();
+        String answer = null;
         if(word2.length() == 0){//当第二个字符串没有输入时
 
             JFrame jFrame  = new JFrame();//创建一个文本框  文本框布局
@@ -439,7 +438,7 @@ public class Main {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     List<Side> list = new ArrayList<>();
-                    String answerToJframe = new String();//存储一条路径
+                    String answerToJframe = null;//存储一条路径
                     String str1, str2;
                     if ( i < G.getSize()  ){
                         Stack<String> stack =  new Stack<>();//利用栈存储路径
@@ -489,11 +488,12 @@ public class Main {
                             gv.addln(gv.end_graph());
 
                             String type = "jpg";//将画的图存储起来
-                            File out = new File("D:\\pics\\lab1." + type);    // Windows
+                            File out = new File("G:\\gitbase\\Lab4\\lab1." + type);    // Windows
                             gv.writeGraphToFile(gv.getGraph(gv.getDotSource(), type), out);
                             try {
                                // taskkill /f /im
-                                openFile("D:\\pics\\lab1.jpg");
+                                openFile("G:\\gitbase\\Lab4\\lab1." + type);
+
                             } catch (IOException e2) {
                                 e2.printStackTrace();
                             }
@@ -556,11 +556,11 @@ public class Main {
             //展示图
 
             String type = "jpg";//将画的图存储起来
-            File out = new File("D:\\pics\\lab1." + type);    // Windows
+            File out = new File("G:\\gitbase\\Lab4\\lab1." + type);    // Windows
             gv.writeGraphToFile( gv.getGraph( gv.getDotSource(), type ), out );
 
             try {
-                openFile("D:\\pics\\lab1.jpg");
+                openFile("G:\\gitbase\\Lab4\\lab1." + type);
             }catch (IOException e) {
                 e.printStackTrace();
             }
@@ -599,7 +599,7 @@ public class Main {
             numberOfSide = this.G.vertexLists[start].getsize();
         }
 
-        String  answer = new String();
+        String  answer = null;
         for(int i = 0; i < randomPath.size(); i++){
             answer += randomPath.get(i).getHead() + " ";//无论是有重复边结束, 还是没有出边结束，都需要把最后一天边完整输出；
         }
