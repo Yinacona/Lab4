@@ -226,9 +226,9 @@ public class Main {
     }
 
     public  String readFileByChars(String filePath) {
-        String result = null;
+        StringBuffer result = new StringBuffer();
         File file = new File(filePath);
-        if (!file.exists()) result = "文件不存在";
+        if (!file.exists()) result.append( "文件不存在");
         else {
             Reader reader ;
             try {
@@ -239,13 +239,13 @@ public class Main {
                 while ((tempchar = reader.read()) != -1) {
 
                         if (tempchar == 10)
-                            result = result + " ";
-
+                            result.append( " ");
                         else if (tempchar == 32 || (tempchar >= 97 && tempchar <= 122)) {
-                            result = result + (char) tempchar;
+                            result = result.append((char) tempchar);
                         } else if ((tempchar >= 65 && tempchar <= 90)) {
-                            result = result + (char) (tempchar + 32);
-                        } else result = result + " ";
+                            result = result.append((char) (tempchar + 32));
+                        } else
+                            result.append( " ");
 
                 }
                 reader.close();
@@ -253,11 +253,11 @@ public class Main {
                 e.printStackTrace();
             }
 
-            this.G = new Graph(result);//构建Graph
+            this.G = new Graph(result.toString());//构建Graph
             //this.G.showGraph();
         }
         //System.out.println(result);
-        return result;
+        return result.toString();
     }
 
     public void showDirectedGraph(Graph G) throws IOException {
@@ -304,20 +304,19 @@ public class Main {
             }
         }
 
-        else ;//不存在则返回空集合
 
         return answers;
     }
 
     public  String queryBridgeWords(String word1, String word2) {
-        String answer ;
+        StringBuffer answer= new StringBuffer(); ;
 
         int positionOfWord1 = this.G.getPosition(word1);
         int positionOfWord2 = this.G.getPosition(word2);
 
         if (positionOfWord1 == -1 || positionOfWord2 == -1){//先查询这两个词是否在文本中出现
-            answer = "No " + word1 + " or " + word2 + " in the graph!";
-            return answer;
+            answer.append("No").append(word1).append(" or ").append(word2).append( " in the graph!");
+            return answer.toString();
         }
 
         else
@@ -325,48 +324,48 @@ public class Main {
             List<String> answers = BridgeWords(word1, word2);
             int size = answers.size();//根据数组的大小来输出结果
             if (size == 0)
-                answer = "No bridge from " + word1 + " to " + word2;
+                answer.append("No bridge from ").append( word1).append( " to ").append(word2);
 
             else if (size == 1){
-                answer ="The bridge words from “" + word1 + "” to “" + word2 + "” is: ";
+                answer.append("The bridge words from “" + word1 + "” to “" + word2 + "” is: ");
                 for (String str :answers)
-                    answer = answer + str;
+                    answer.append(str);
             }
 
             else {
-                answer ="The bridge words from “" + word1 + "” to “" + word2 + "” are: ";
+                answer.append("The bridge words from “" + word1 + "” to “" + word2 + "” are: ");
                 for (String str :answers)
-                    answer = answer + str + " ";
+                    answer.append(str + " ");
             }
-            return  answer;
+            return  answer.toString();
         }
     }
 
     private String generateNewText(String inputText){
         String [] arr = inputText.split("\\s+");
 
-        String  answer = null;
+        StringBuffer  answer = new StringBuffer();
         if (arr.length == 0 || arr.length == 1) return inputText;
 
         for (int i = 0; i < arr.length - 1; i++){
-            answer = answer + arr[i];
+            answer.append(arr[i]);
             List<String> listOfBridgeWords = BridgeWords(arr[i],arr[i+1]);
 
             if (listOfBridgeWords.size() == 0)
-                answer = answer + " ";
+                answer.append( " ");
 
             else if (listOfBridgeWords.size() == 1) {
-                answer = answer + " " + listOfBridgeWords.get(0) + " ";
+                answer.append(" " + listOfBridgeWords.get(0) + " ");
             }
             else {
                 int index = (int)(Math.random()*listOfBridgeWords.size());
-                answer = answer + " " + listOfBridgeWords.get(index) + " ";
+                answer.append(" " + listOfBridgeWords.get(index) + " ");
             }
 
         }
 
-        answer  = answer + arr[arr.length - 1];
-        return  answer;
+        answer.append(arr[arr.length - 1]);
+        return  answer.toString();
     }
 
     private String calcShortestPath(String word1, String word2){
@@ -404,7 +403,7 @@ public class Main {
         for (int i = 0; i < this.G.getSize(); i++){
             min = BigNum;
             for(int j = 0; j < this.G.getSize(); j++)    {//找到当前最小的点
-                if(vis[j] != true && dist[j] < min)    {
+                if(!vis[j] && dist[j] < min)    {
                     min = dist[j];
                     v = j;
                 }
@@ -413,14 +412,14 @@ public class Main {
             else vis[v] = true;//将该点标记为访问过
 
             for(int j = 0; j < this.G.getSize(); j++) {
-                if( vis[j] != true && dist[j] > dist[v] + graph[v][j]) {
+                if( !vis[j]&& dist[j] > dist[v] + graph[v][j]) {
                     dist[j] = dist[v] + graph[v][j];
                     path[j] = v;
                 }
             }
         }//对图的处理结束，接下来是输出结果
 
-        String answer = null;
+        String answer = new String();
         if(word2.length() == 0){//当第二个字符串没有输入时
 
             JFrame jFrame  = new JFrame();//创建一个文本框  文本框布局
@@ -438,7 +437,7 @@ public class Main {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     List<Side> list = new ArrayList<>();
-                    String answerToJframe = null;//存储一条路径
+                    StringBuffer answerToJframe = new StringBuffer();//存储一条路径
                     String str1, str2;
                     if ( i < G.getSize()  ){
                         Stack<String> stack =  new Stack<>();//利用栈存储路径
@@ -453,24 +452,23 @@ public class Main {
                         }//路径添加完毕
 
                         if (dist[i] != BigNum && i != index){//对可达路径的处理
-                            answerToJframe = answerToJframe + word1 + "->";
+                            answerToJframe.append(word1 + "->");
                             str1 = word1;
                             while(!stack.empty()){
                                 str2 = stack.pop();
-                                answerToJframe = answerToJframe + str2 + "->" ;
+                                answerToJframe.append(str2 + "->") ;
                                 list.add(new Side(str1, str2));
                                 str1 = str2;
                             }
                             list.add(new Side(str1, G.vertexLists[i].ch));
-                            answerToJframe = answerToJframe + G.vertexLists[i].ch +";     " + word1 + "到" + G.vertexLists[i].ch
-                                    + "的最短路径长度为：" + dist[i] +"\n";
+                            answerToJframe.append(G.vertexLists[i].ch +";     " + word1 + "到" + G.vertexLists[i].ch
+                                    + "的最短路径长度为：" + dist[i] +"\n");
                         }
 
-                        else  answerToJframe = word1 + " and " + G.vertexLists[i].ch +"不可达" + "\n";
-                        answerToJframe = answerToJframe + "\n";
+                        else  answerToJframe.append(word1 + " and " + G.vertexLists[i].ch +"不可达\n\n");
                         Document docs = messagePane.getDocument();//获得文本对象
                         try {
-                            docs.insertString(docs.getLength(),answerToJframe ,attrset);//对文本进行追加
+                            docs.insertString(docs.getLength(),answerToJframe.toString() ,attrset);//对文本进行追加
                         } catch (BadLocationException e1) {
                             e1.printStackTrace();
                         }
@@ -599,13 +597,13 @@ public class Main {
             numberOfSide = this.G.vertexLists[start].getsize();
         }
 
-        String  answer = null;
+        StringBuffer  answer = new StringBuffer();
         for(int i = 0; i < randomPath.size(); i++){
-            answer += randomPath.get(i).getHead() + " ";//无论是有重复边结束, 还是没有出边结束，都需要把最后一天边完整输出；
+            answer.append(randomPath.get(i).getHead() + " ");//无论是有重复边结束, 还是没有出边结束，都需要把最后一天边完整输出；
         }
-        answer += randomPath.get(randomPath.size()-1).getTail();//加入最后一天边的尾节点;
+        answer.append(randomPath.get(randomPath.size()-1).getTail());//加入最后一天边的尾节点;
 
-        return  answer;
+        return  answer.toString();
     }
 
     public void openFile (String path) throws IOException{

@@ -73,8 +73,9 @@ public class Graph {
         List<String> listhaskongge = new ArrayList<>();
 
         for (int i = 0; i < arr1.length; i++) {
-            if ( arr1[i].length() == 0) ;//处理空串
-            else listhaskongge.add(arr1[i]);
+            if ( arr1[i].length() != 0) {
+                listhaskongge.add(arr1[i]);
+            }
         }
 
         arr = new String[listhaskongge.size()];
@@ -141,7 +142,7 @@ public class Graph {
         return -1;
     }
 
-    public  void showGraph(){//在控制台上显示图
+    /*public  void showGraph(){//在控制台上显示图
         ///System.out.println("*****" + vertexLists[0].ch +"******");
         for (int i = 0; i < this.size; i++){
             Vertex temp = vertexLists[i].next;
@@ -153,7 +154,7 @@ public class Graph {
             }
             //System.out.println("$$$$$$$$$$");
         }
-    }
+    }*/
 
     public void drawGraph(){
         GraphViz gv = new GraphViz();
@@ -178,10 +179,10 @@ public class Graph {
     }
 
 
-    public static void main(String[] args){
-        String S = new String("To  explore strange new worlds To seek out new life and new civilizations To  explore");
+  /*  public static void main(String[] args){
+        String S = "To  explore strange new worlds To seek out new life and new civilizations To  explore";
         Graph G = new Graph(S);
-        G.showGraph();
+        //G.showGraph();
         for(int i = 0; i < G.getSize(); i++){
             for (int j = 0; j < G.getSize(); j++){
                 System.out.print(G.martixOfGraph[i][j]);
@@ -192,5 +193,5 @@ public class Graph {
         System.out.print(G.inNext("new","life"));
         System.out.print(G.inNext("new","new"));
         G.drawGraph();
-    }
+    }*/
 }
